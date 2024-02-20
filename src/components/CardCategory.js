@@ -3,9 +3,9 @@ import ShadowPrimary from './wrappers/ShadowPrimary'
 import colors from '../utils/global/colors'
 import fonts from '../utils/global/fonts'
 
-const CardCategory = ({ item, selectedCategoryState }) => {
+const CardCategory = ({ item, navigation }) => {
     return (
-        <Pressable onPress={() => selectedCategoryState(item)}>
+        <Pressable onPress={() => navigation.navigate("ProductsByCategory", { category: item })}>
             <ShadowPrimary style={styles.container}>
                 <Text style={styles.texto}>
                     {item}

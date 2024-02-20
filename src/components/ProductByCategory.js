@@ -2,12 +2,12 @@ import { StyleSheet, Text, View, Image, useWindowDimensions, Pressable } from 'r
 import React from 'react'
 import colors from '../utils/global/colors'
 
-const ProductByCategory = ({ item, selectedProductId }) => {
+const ProductByCategory = ({ item }) => {
     const { width } = useWindowDimensions()
 
     return (
         <Pressable
-            onPress={() => selectedProductId(item.id)}
+            onPress={() => console.log(item.id)}
             style={styles.container}
         >
             <Image

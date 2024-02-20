@@ -3,12 +3,12 @@ import Headers from '../components/Headers'
 import Categories from '../components/Categories'
 
 
-const Home = ({ selectedCategoryState }) => {
+const Home = ({navigation}) => {
 
     return (
         <View>
             <Headers title="Mi e-commerce" />
-            <Categories selectedCategoryState={selectedCategoryState} />
+            <Categories navigation={navigation}/>
         </View>
     )
 }

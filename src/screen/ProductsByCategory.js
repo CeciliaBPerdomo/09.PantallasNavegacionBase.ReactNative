@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import ProductByCategory from '../components/ProductByCategory'
 import Search from '../components/wrappers/Search'
 
-const ProductsByCategory = ({ categorySelected, selectedProductId }) => {
+const ProductsByCategory = ({ categorySelected }) => {
 
   const [productsFiltered, setProductsFiltered] = useState([])
   const [keyWord, setKeyWord] = useState("")
@@ -20,7 +20,6 @@ const ProductsByCategory = ({ categorySelected, selectedProductId }) => {
       setProductsFiltered(productsFiltered.filter(product => {
         const productTitleLower = product.title.toLowerCase()
         const keyWordLower = keyWord.toLowerCase()
-        //product.title.includes(keyWord)
         return productTitleLower.includes(keyWordLower)
       }
       ))
@@ -47,7 +46,6 @@ const ProductsByCategory = ({ categorySelected, selectedProductId }) => {
         keyExtractor={item => item.id}
         renderItem={({ item }) => <ProductByCategory
           item={item}
-          selectedProductId={selectedProductId}
         />}
       />
     </>
