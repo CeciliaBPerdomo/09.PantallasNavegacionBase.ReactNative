@@ -2,9 +2,15 @@ import { StyleSheet, Text, View, Pressable, Platform, StatusBar } from 'react-na
 import colors from '../utils/global/colors'
 import { AntDesign } from "@expo/vector-icons" //Iconos
 
-const Headers = ({ title }) => {
+const Headers = ({ title, navigation }) => {
     return (
         <View style={styles.container}>
+            {/* No se puede volver para atras en la primera pantalla */}
+            {navigation.canGoBack() &&
+            <Pressable style={styles.goBack} onPress={() => navigation.goBack()}>
+                <AntDesign name="arrowleft" size={25} color="black" />
+            </Pressable>
+            }
             <Text style={styles.text}>
                 {title}
             </Text>
@@ -23,9 +29,16 @@ const styles = StyleSheet.create({
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
+        position: "relative"
     },
 
     text: {
         fontSize: 30,
+    },
+
+    goBack: {
+        position: "absolute",
+        left: 10, 
+        bottom: 15
     }
 })

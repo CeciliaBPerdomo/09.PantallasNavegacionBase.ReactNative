@@ -6,10 +6,11 @@ import products from "../utils/data/productos.json"
 import Headers from '../components/Headers'
 import colors from '../utils/global/colors'
 
-const ProductDetail = ({ productId }) => {
+const ProductDetail = ({ route }) => {
+  const {productId} = route.params
   const [product, setProduct] = useState({})
-  const [portait, setPortait] = useState(true)
   
+  const [portait, setPortait] = useState(true)
   const { width, height } = useWindowDimensions()
 
   useEffect(() => {
@@ -26,9 +27,6 @@ const ProductDetail = ({ productId }) => {
 
   return (
     <View style={styles.container}>
-
-      <Headers title="Detalles" />
-
       <View style={[styles.content, !portait && {flexDirection: "row", gap: 10, padding: 20}]}>
         <Image
           style={[styles.image, !portait && {width: "40%", height: 200}]}

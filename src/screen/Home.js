@@ -7,7 +7,6 @@ const Home = ({navigation}) => {
 
     return (
         <View>
-            <Headers title="Mi e-commerce" />
             <Categories navigation={navigation}/>
         </View>
     )

@@ -2,12 +2,12 @@ import { StyleSheet, Text, View, Image, useWindowDimensions, Pressable } from 'r
 import React from 'react'
 import colors from '../utils/global/colors'
 
-const ProductByCategory = ({ item }) => {
+const ProductByCategory = ({ item, navigation }) => {
     const { width } = useWindowDimensions()
 
     return (
         <Pressable
-            onPress={() => console.log(item.id)}
+            onPress={() => navigation.navigate("ProductDetail", {productId: item.id})}
             style={styles.container}
         >
             <Image

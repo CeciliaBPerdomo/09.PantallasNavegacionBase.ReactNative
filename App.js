@@ -10,8 +10,9 @@ import { fontCollection } from './src/utils/global/fonts'
 import colors from './src/utils/global/colors'
 
 //Navegacion
-import { NavigationContainer } from '@react-navigation/native' 
+import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Headers from './src/components/Headers'
 
 const Stack = createNativeStackNavigator();
 
@@ -27,11 +28,38 @@ const App = () => {
       />
 
       <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="ProductsByCategory" component={ProductsByCategory} />
-        <Stack.Screen name="ProductDetail" component={ProductDetail} />
-      </Stack.Navigator>
+        <Stack.Navigator
+          initialRouteName='Home'
+          screenOptions={({ route, navigation }) => {
+            return {
+              header: () => {
+                return <Headers
+                  navigation={navigation}
+                  title={route.name === "Home" ? "Mi e-commerce" :
+                    route.name === "ProductsByCategory" ? route.params.categorySelected :
+                      "Detalle producto"
+                  } />
+              }
+            }
+          }}
+        >
+
+          <Stack.Screen
+            name="Home"
+            component={Home}
+          />
+
+          <Stack.Screen
+            name="ProductsByCategory"
+            component={ProductsByCategory}
+          />
+
+          <Stack.Screen
+            name="ProductDetail"
+            component={ProductDetail}
+          />
+
+        </Stack.Navigator>
       </NavigationContainer>
 
     </>
